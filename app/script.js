@@ -108,7 +108,9 @@ class App extends React.Component {
         ) : (
           <div></div>
         )}
-        <button className="btn btn-close">X</button>
+        <button onClick={() => window.close()} className="btn btn-close">
+          X
+        </button>
       </div>
     );
   }
