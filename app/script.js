@@ -15,6 +15,8 @@ class App extends React.Component {
       time: newTime,
     });
 
+    console.log('newTime', newTime);
+
     if (this.state.time === 0) {
       switch (this.state.status) {
         case 'work':
@@ -37,7 +39,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { status, time } = this.state;
+    const { status, time, timer } = this.state;
 
     function formatTime(sec) {
       const sec_num = parseInt(sec, 10);
@@ -56,6 +58,14 @@ class App extends React.Component {
         timer: setInterval(this.step, 1000),
         time: 5,
         status: 'work',
+      });
+    };
+
+    const stopTimer = () => {
+      clearInterval(timer);
+      this.setState({
+        time: 0,
+        status: 'off',
       });
     };
 
@@ -91,7 +101,13 @@ class App extends React.Component {
         ) : (
           <div></div>
         )}
-        {status !== 'off' ? <button className="btn">Stop</button> : <div></div>}
+        {status !== 'off' ? (
+          <button onClick={() => stopTimer()} className="btn">
+            Stop
+          </button>
+        ) : (
+          <div></div>
+        )}
         <button className="btn btn-close">X</button>
       </div>
     );
