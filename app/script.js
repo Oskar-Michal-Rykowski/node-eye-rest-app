@@ -15,24 +15,26 @@ class App extends React.Component {
       time: newTime,
     });
 
-    console.log('newTime', newTime);
+    const playBell = () => {
+      const bell = new Audio('./sounds/bell.wav');
+      bell.play();
+    };
 
     if (this.state.time === 0) {
       switch (this.state.status) {
         case 'work':
           this.setState({
-            // timer: setInterval(this.step, 1000),
             time: 2,
             status: 'rest',
           });
+          playBell();
           break;
-
         case 'rest':
           this.setState({
-            // timer: setInterval(this.step, 1000),
             time: 5,
             status: 'work',
           });
+          playBell();
           break;
       }
     }
