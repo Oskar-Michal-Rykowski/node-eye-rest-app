@@ -4,8 +4,8 @@ import { render } from 'react-dom';
 class App extends React.Component {
   state = {
     status: 'off',
-    time: 1000,
-    timer: null,
+    time: 1200,
+    timer: '',
   };
 
   step = () => {
@@ -58,7 +58,7 @@ class App extends React.Component {
     const startTimer = () => {
       this.setState({
         timer: setInterval(this.step, 1000),
-        time: 5,
+        time: 1200,
         status: 'work',
       });
     };
@@ -66,7 +66,7 @@ class App extends React.Component {
     const stopTimer = () => {
       clearInterval(timer);
       this.setState({
-        time: 0,
+        time: 20,
         status: 'off',
       });
     };
